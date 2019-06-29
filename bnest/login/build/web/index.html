@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript">
+var ajaxreq;
+var ename;
+var flag=0;
+function cleartext()
+{
+var sp1=document.getElementById("data");
+  sp1.innerHTML="";  
+}
+function validate(){
+    ajaxreq=new XMLHttpRequest();
+    
+email=document.getElementById("email").value;
+pass=document.getElementById("pass").value;
+if(email==="" || pass==="" )
+    return false;
+return true;
+}
+function getdata()
+{
+if(!validate()){
+    alert("कृपया सभी फ़ील्ड इनपुट करें ");
+    return;
+    }
+   
+ajaxreq.onreadystatechange=processresponse;
+var reqstr="login.jsp";
+ajaxreq.open("POST",reqstr,true);
+ajaxreq.setRequestHeader("content-type","application/x-www-form-urlencoded");
+ajaxreq.send("email="+email+"&pass="+pass);
+
+}
+function processresponse()
+{
+if(ajaxreq.readyState===4)
+{
+  
+var sp1=document.getElementById("data");
+var result=sp1.innerHTML=ajaxreq.responseText;
+if(result.trim()==="fail")
+{
+   sp1.innerHTML="गलत ईमेल और पासवर्ड";
+   sp1.style.color="red";
+   sp1.style.fontSize="20px";
+}
+else
+{
+    //alert("login ok");
+    sp1.innerHTML="सफलतापूर्वक लॉगिन करें"
+    //sp1.innerHTML="Login Sussfully Done Hello"+result;
+    sp1.style.color="green";
+    sp1.style.fontSize="20px";
+  
+   }
+}
+}
+</script>
+    </head>
+    <body>
+        <div class="logininbox">
+        <fieldset id="loginfieldset"><legend>लॉग इन करें</legend>
+        <h1>लॉग इन करें</h1>
+        <form>
+            <p>ईमेल</p>
+            <input type="text" name="email" id="email" placeholder="ईमेल दर्ज" onfocus="cleartext()">
+            <p>पासवर्ड</p>
+            <input type="password" name="pass" id="pass" placeholder="पासवर्ड दर्ज">
+            <span id="data"></span><br>
+            <input type="button" name="button" value="लॉग इन करें" onclick="getdata()"><br>
+                        
+            
+            <center><a href="#"><b>पासवर्ड भूल गए</a></center>
+            <center><a href="page2.html"><b>खाता नहीं है?</a></center>
+            </form>
+            </fieldset>
+        </div>
+       
+    
+    </body>
+</html>

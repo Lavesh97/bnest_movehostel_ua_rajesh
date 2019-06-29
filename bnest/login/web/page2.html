@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <title>Registration form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript">
+          var ajaxreq=new XMLHttpRequest();
+          var uname,email,pass,mobile,dat;
+          function cleartext()
+          {
+              dat=document.getElementById("data");
+              dat.innerHTML="";
+          }
+          function phonenumber(inputtxt){
+         var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+         if(inputtxt.value.match(phoneno)){
+            // alert("mobile sahi h");
+                 return true;
+                 
+             }
+           else{
+            alert("कृपया 10 अंकों का मोबाइल नंबर दर्ज करें");
+            return false;
+           }
+           }
+          	function ValidateEmail(inputText)
+            {
+
+         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+         if(inputText.value.match(mailformat))
+         {
+         //alert("The email you entered was correct");
+         return phonenumber(document.form1.mobile);;
+          }
+         else
+          {
+         alert("आपने एक अमान्य विद्युतडाक पता दर्ज किया है!");
+         return false;
+          }
+         }
+
+ function validate()
+          {
+           uname=document.getElementById("uname").value;
+           email=document.getElementById("email").value;
+           pass=document.getElementById("pass").value;
+           mobile=document.getElementById("mobile").value;
+           if(uname==""||email==""||pass==""||mobile==""){
+               alert("कृपया सभी स्थाान भरे");
+               return false;
+             }
+           //return ValidateEmail(document.form1.email);
+           return phonenumber(document.form1.mobile);
+          }
+
+
+
+            
+           function connect()
+           {
+               //alert("connct");
+               if(validate())      
+        {  alert(email);
+               ajaxreq.onreadystatechange=processresponse;
+               var reqstr="registration.jsp";
+               ajaxreq.open("POST",reqstr,true);
+               ajaxreq.setRequestHeader("content-type","application/x-www-form-urlencoded");
+               ajaxreq.send("&uname="+uname+"&email="+email+"&pass="+pass+"&mobile="+mobile);
+           }
+               }
+   
+           function processresponse()
+{
+
+if(ajaxreq.readyState===4)
+{
+dat=document.getElementById("data");
+var ans=ajaxreq.responseText;
+if(ans.trim()=="done"){
+    
+      dat.innerHTML="बधाई हो ! पंजीकरण सफल";
+      dat.style.color="Yellow";
+}
+else
+{
+        dat.innerHTML="पंजीकरण विफल!<br> ";
+        dat.style.color="red";
+	
+}
+
+}
+}
+        </script>
+    </head>
+    <body>
+        <div class="logininbox">
+        <fieldset id="loginfieldset"><legend>पंजीकरण फॉर्म</legend>
+            
+        <h1>पंजीकरण</h1>
+        <form name="form1">
+            <p>उपयोगकर्ता नाम</p>
+            <input type="text" name="uname" id="uname" placeholder="उपयोगकर्ता नाम दर्ज" onfocus="cleartext()">
+            <p>ईमेल</p>
+            <input type="text" name="email" id="email" placeholder="ईमेल दर्ज">
+            <p>पासवर्ड</p>
+            <input type="password" name="pass" id="pass" placeholder="पासवर्ड दर्ज">
+            <p>मोबाइल नंबर</p>
+            <input type="text" name="mobile" id="mobile" placeholder="मोबाइल नंबर दर्ज">
+            <span id="data"></span><br>
+            <input type="button" name="submit" value="साइन अप करें" onclick="connect()"><br>
+            
+            <center><a href="index.html"><b>पहले से ही खाता है?</b></a><center>
+         </form>
+        </fieldset>
+    </div>
+    </body>
+</html>

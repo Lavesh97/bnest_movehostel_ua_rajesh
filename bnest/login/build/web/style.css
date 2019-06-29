@@ -1,0 +1,136 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family:fantasys;
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url(backgound4.jpeg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    
+}
+.logininbox{
+    
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+ }
+.download2
+{
+    width: 100px;
+    height: 100px;
+    border-radius:50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+h1{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+}
+.logininbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    
+}
+.logininbox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.logininbox input[type="email"], input[type="password"], input[type="text"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 18px;
+    
+}
+.logininbox input[type="button"]
+{
+    border: none;
+    outline: none;
+    height: 40px;;
+    background: #fb2525;
+    color:#fff;
+    font-size: 18px;
+    border-radius: 20px;
+    
+}
+.logininbox input[type="button"]:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color:#000;
+}
+.logininbox input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;;
+    background: #fb2525;
+    color:#fff;
+    font-size: 18px;
+    border-radius: 20px;
+    
+}
+.logininbox input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color:#000;
+}
+a{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.logininbox a{
+   
+    text-decoration: none;
+    position: center;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #5B4945;
+    
+}
+.logininbox a:hover
+{
+    font-size:22px;
+ color:#F00401;    
+
+}
+#loginfieldset,#homepage,#registrationfieldset
+{
+    border: solid 5px black;
+    border-radius: 18px;
+    padding-left: 12px;
+    position: center;
+    font-size: 130%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:  -4%; 
+    width: 380px;
+    
+}
+
+legend
+{
+   
+    color:  black;
+    
+}
+#loginresult
+{
+    font-size:16px;
+    font-color: red;
+    font-weight: bold;
+}
